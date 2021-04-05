@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+          <link rel="stylesheet" href="../styles/style.css">
+  {{!-- lo armo como si fuera un html normal! la diferencia es que voy a poder insertar parciales --}}
+    </head>
+    <body>
+      <div class="main-content">
+            {{>header}}
+            <article class="widget">
+                <form class="weatherLocation"><input placeholder="location..." type = "text"/><button>Seach</button>
+                </form>
+                <div class="weatherIcon"><i class="wi wi-day-cloudy"></i></div>
+                <div class="weatherInfo">
+                    <div class="temperature"><span></span></div>
+                    <div class="description">    
+                        <div class="weatherCondition"></div>    
+                        <div class="place"></div>
+                    </div>
+                </div>
+                <div class="date"></div>
+            </article>
+        </div>
+        <script src="index.js"></script>  <!-- es el index de node! -->
+
+    </body>
+</html>
