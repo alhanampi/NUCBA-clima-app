@@ -3,9 +3,7 @@ const path = require("path");
 const hbs = require("hbs");
 const morgan = require("morgan");
 
-//*para usar el env: npm install node-env-file — save
-const env = require("node-env-file"); // .env file
-env(__dirname + "/.env");
+require('dotenv').config()
 
 const app = express();
 const PORT = process.env.PORT || 8080;

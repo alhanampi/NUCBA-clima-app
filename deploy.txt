@@ -1,0 +1,20 @@
+https://devcenter.heroku.com/articles/deploying-nodejs
+
+1. crear cuenta
+2. instalar el CLI: https://devcenter.heroku.com/articles/heroku-cli
+3. agregar como engine al package.json la versión de node (chequeenla con node -v): 
+  "engines": {
+      "node": "14.15.0"
+    }
+4. correr en la consola: "heroku local web". Debería levantar en el puerto 5050 (si no anda, fíjense si no tenían abierto el visual mientras instalaban heroku!)
+5. correr las instrucciones de deploy:
+  git add .
+  git commit -m "Added a Procfile."
+  heroku login
+  Enter your Heroku credentials.
+  ...
+  heroku create
+  Creating arcane-lowlands-8408... done, stack is cedar
+  http://arcane-lowlands-8408.herokuapp.com/ | git@heroku.com:arcane-lowlands-8408.git
+  Git remote heroku added
+  git push heroku main

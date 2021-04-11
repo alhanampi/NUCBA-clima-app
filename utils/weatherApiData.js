@@ -7,10 +7,6 @@
 // const apiKey = 'ce78936306fa561f61f580f1978e254b'
 // const getWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
 
-//*se supooone que si no lo incluyo debería andar, peeeero...
-const env = require("node-env-file"); // .env file
-env("./.env");
-
 const axios = require("axios");
 
 //*el callback se puede extraer (a mí suele no gustarme esa sintaxis, pero se puede)
@@ -19,7 +15,7 @@ const axios = require("axios");
 const weatherData = (place, callback) => {
   const API_url = `${process.env.weather_URL}${encodeURIComponent(
     place
-  )}&units=metric&lang=sp&appid=${process.env.secret_key}`;
+  )}&units=metric&appid=${process.env.secret_key}`;
   // console.log(API_url);
   //*hago el request a esa api y pido que sea en formato json. Ese body viene de la API
   axios(API_url)
@@ -28,6 +24,7 @@ const weatherData = (place, callback) => {
       callback(undefined, {
         temp: response.data.main.temp,
       description: response.data.weather[0].description,
+      main: response.data.weather[0].main,
       city: response.data.name
       })
     })

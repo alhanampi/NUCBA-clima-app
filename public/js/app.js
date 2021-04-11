@@ -50,7 +50,7 @@ weatherForm.addEventListener("submit", (e) => {
     console.log(response);
     response.json().then((data) => {
       //*con el console.log, veo que la data me trae solo las cosas que estipulé desde el back para que vengan
-      console.log(data);
+      // console.log(data);
       //*hacemos el catch de errores:
 
       if (data.error) {
@@ -58,12 +58,57 @@ weatherForm.addEventListener("submit", (e) => {
         tempBox.textContent = "";
         weatherCondition.textContent = "";
       } else {
-          //*reemplazar esto por un case!
-        if (data.description === "rain" || data.description === "fog") {
-          weatherIcon.className = "wi wi-day-" + data.description;
-        } else {
-          weatherIcon.className = "wi wi-day-cloudy";
+        //* salen de acá: https://openweathermap.org/weather-conditions
+        //* y de acá los íconos: https://erikflowers.github.io/weather-icons/
+        // console.log(data.main);
+        switch (data.main) {
+          case "Thunderstorm":
+            weatherIcon.className = "wi wi-thunderstorm";
+            break;
+          case "Drizzle":
+            weatherIcon.className = "wi wi-showers";
+            break;
+          case "Rain":
+            weatherIcon.className = "wi wi-rain";
+            break;
+          case "Snow":
+            weatherIcon.className = "wi wi-snow";
+            break;
+          case "Mist":
+            weatherIcon.className = "wi wi-fog";
+            break;
+          case "Smoke":
+            weatherIcon.className = "wi wi-smoke";
+            break;
+          case "Haze":
+            weatherIcon.className = "wi wi-day-haze";
+            break;
+          case "Dust":
+            weatherIcon.className = "wi wi-dust";
+            break;
+          case "Sand":
+            weatherIcon.className = "wi wi-sandstorm";
+            break;
+          case "Ash":
+            weatherIcon.className = "wi wi-sleet";
+            break;
+          case "Squall":
+            weatherIcon.className = "wi wi-rain-wind";
+            break;
+          case "Tornado":
+            weatherIcon.className = "wi wi-hurricane";
+            break;
+          case "Clear":
+            weatherIcon.className = "wi wi-day-sunny";
+            break;
+          case "Clouds":
+            weatherIcon.className = "wi wi-cloud";
+            break;
+          default:
+            weatherIcon.className = "wi wi-alien";
+            break;
         }
+
         //*y ahora completamos las cajitas con las respuestas. Podríamos traer muchos más datos del backend y mostrarlos!
         locationBox.textContent = data.city;
         tempBox.textContent = data.temp + " º";
